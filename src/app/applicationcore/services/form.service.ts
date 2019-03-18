@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Form } from '../interfaces/Form';
+import { IFormType } from '../interfaces/IFormType';
 import { HttpErrorHandler, HandleError } from '../../infrastructure/services/http-error-handler.service';
 
 const httpOptions = {
@@ -18,7 +19,8 @@ const httpOptions = {
 
 @Injectable()
 export class FormService {
-  heroesUrl = 'api/forms';  // URL to web api
+  formsUrl = 'api/forms';  // URL to web api
+  formsTypeURL = 'api/formsType'; // URL for form Types
   private handleError: HandleError;
 
   constructor(
@@ -29,7 +31,15 @@ export class FormService {
 
   /** GET heroes from the server */
   getForms (): Observable<Form[]> {
-    return this.http.get<Form[]>(this.heroesUrl)
+    return this.http.get<Form[]>(this.formsUrl)
+      .pipe(
+        catchError(this.handleError('getHeroes', []))
+      );
+  }
+
+  /**Get All Forms Type */
+  getFormsType (): Observable<IFormType[]> {
+    return this.http.get<IFormType[]>(this.formsUrl)
       .pipe(
         catchError(this.handleError('getHeroes', []))
       );
@@ -43,7 +53,7 @@ export class FormService {
     const options = term ?
      { params: new HttpParams().set('name', term) } : {};
 
-    return this.http.get<Form[]>(this.heroesUrl, options)
+    return this.http.get<Form[]>(this.formsUrl, options)
       .pipe(
         catchError(this.handleError<Form[]>('searchHeroes', []))
       );
@@ -53,7 +63,7 @@ export class FormService {
 
   /** POST: add a new hero to the database */
   addForm (hero: Form): Observable<Form> {
-    return this.http.post<Form>(this.heroesUrl, hero, httpOptions)
+    return this.http.post<Form>(this.formsUrl, hero, httpOptions)
       .pipe(
         catchError(this.handleError('addHero', hero))
       );
@@ -61,7 +71,7 @@ export class FormService {
 
   /** DELETE: delete the hero from the server */
   deleteForm (id: number): Observable<{}> {
-    const url = `${this.heroesUrl}/${id}`; // DELETE api/heroes/42
+    const url = `${this.formsUrl}/${id}`; // DELETE api/heroes/42
     return this.http.delete(url, httpOptions)
       .pipe(
         catchError(this.handleError('deleteHero'))
@@ -73,7 +83,7 @@ export class FormService {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
-    return this.http.put<Form>(this.heroesUrl, hero, httpOptions)
+    return this.http.put<Form>(this.formsUrl, hero, httpOptions)
       .pipe(
         catchError(this.handleError('updateHero', hero))
       );
@@ -81,8 +91,3 @@ export class FormService {
 }
 
 
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/

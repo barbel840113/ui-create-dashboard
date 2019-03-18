@@ -8,6 +8,12 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 13, name: 'Bombasto' },
       { id: 14, name: 'Celeritas' },
     ];
-    return {forms};
+
+    const formsType = [
+       {id : 1000, type: 'datetimepicker', typecode :100000}
+    ];
+
+    const auth = {isLogged : true};
+    return {forms, auth};
   }
 }

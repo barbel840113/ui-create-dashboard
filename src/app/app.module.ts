@@ -23,6 +23,9 @@ import { RequestCache, RequestCacheWithMap } from './infrastructure/services/req
 import { httpInterceptorProviders } from './infrastructure/http-interceptors/index';
 import { FormService } from './applicationcore/services/form.service';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthenticateEffects } from './store/effects/authenticate.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +51,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-
+    EffectsModule.forRoot([AuthenticateEffects]),
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, {
         dataEncapsulation: false,

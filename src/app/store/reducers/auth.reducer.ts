@@ -1,18 +1,26 @@
 import { Action } from '@ngrx/store';
+import { IAuthState, initializeAuthState } from '../state/auth.state';
+import { AuthActions, EAuthctions } from '../actions/auth.actions';
 
+export const authReducers = (
+    state = initializeAuthState,
+    action: AuthActions
+): IAuthState => {
 
-export interface State {
+    switch (action.type) {
+        case EAuthctions.LoggIn: {
+            return {
+                ...state
+            }
+        }
 
-}
-
-export const initialState: State = {
-
+        case EAuthctions.LoggedSuccess:{
+            return {
+                ...state,
+                auth : action.payload
+            }
+        }
+        default:
+            return state;
+    }
 };
-
-export function reducer(state = initialState, action: Action): State {
-  switch (action.type) {
-
-    default:
-      return state;
-  }
-}
