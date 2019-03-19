@@ -10,10 +10,11 @@ export class InMemoryDataService implements InMemoryDbService {
     ];
 
     const formsType = [
-       {id : 1000, type: 'datetimepicker', typecode :100000}
+       {id : 1, type: 'datetimepicker', displayname : 'Date Time Picker', typecode : 100000},
+       {id : 2, type: 'textfield', displayname : 'Text Field', typecode : 100002}
     ];
 
     const auth = {isLogged : true};
-    return {forms, auth};
+    return {forms, auth, formsType};
   }
 }

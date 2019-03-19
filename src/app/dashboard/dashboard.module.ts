@@ -8,6 +8,10 @@ import { FieldTypeComponent } from './field-type/field-type.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { DatetimepickerComponent } from '../applicationcore/fieldstypes/datetimepicker/datetimepicker.component';
 import { DemoMaterialModule} from '../material-module';
+import { EffectsModule } from '@ngrx/effects';
+import { FormEffects } from '../store/effects/form.effects';
+import { StoreModule } from '@ngrx/store';
+import {formReducer}  from '../store/reducers/form.reducer';
 
 @NgModule({
   declarations: [IndexComponent, FormComponent, FieldTypeComponent, DatetimepickerComponent],
@@ -16,6 +20,8 @@ import { DemoMaterialModule} from '../material-module';
     DashboardRoutingModule,
     DemoMaterialModule,
     DragDropModule,
+    EffectsModule.forFeature([FormEffects]),
+    StoreModule.forFeature('form', formReducer),
  
   ]
 })

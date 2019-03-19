@@ -39,9 +39,9 @@ export class FormService {
 
   /**Get All Forms Type */
   getFormsType (): Observable<IFormType[]> {
-    return this.http.get<IFormType[]>(this.formsUrl)
+    return this.http.get<IFormType[]>(this.formsTypeURL)
       .pipe(
-        catchError(this.handleError('getHeroes', []))
+        catchError(this.handleError('getFormsTypes', []))
       );
   }
 

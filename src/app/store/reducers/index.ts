@@ -12,10 +12,12 @@ import { userReducers } from './user.reducer';
 import { authReducers } from './auth.reducer';
 
 
+
 export const appReducers: ActionReducerMap<IAppState, any> = {
      router : routerReducer,
      users: userReducers,
      auth: authReducers,
+     form : null
 };
 
 
