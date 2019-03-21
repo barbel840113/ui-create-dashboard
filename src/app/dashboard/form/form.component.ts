@@ -18,8 +18,7 @@ export class FormComponent implements OnInit {
 
   getForms() :void{
     this.formService.getForms().subscribe(forms => {
-      this.forms = forms;
-      console.log(this.forms);
+      this.forms = forms;    
     });
   }
 

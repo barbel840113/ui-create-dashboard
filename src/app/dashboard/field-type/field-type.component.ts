@@ -21,13 +21,14 @@ export class FieldTypeComponent implements OnInit {
   constructor(
     private _store: Store<IFormTypeState>
   ){
-    this.formType$ = this._store.pipe(select(state => state.formtype), map(res => this.todo = res));
-    
-    this.formType$.subscribe(res => this.todo = res );
   }
 
   ngOnInit(): void {
     this._store.dispatch( new formActions.GetFormsType());
+
+    this.formType$ = this._store.pipe(select(selectFormTypesList));
+
+    this.formType$.subscribe(res => this.todo = res );
   }
 
   todo :IFormType[] = [];

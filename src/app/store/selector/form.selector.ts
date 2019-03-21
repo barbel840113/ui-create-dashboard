@@ -3,7 +3,7 @@ import { createSelector } from '@ngrx/store';
 import { IAppState } from '../state/app.state';
 import { IFormTypeState } from '../state/formtype.state';
 
-const selectFormType = (state: IAppState) => state.form;
+export const selectFormType = (state: IAppState) => state.form;
 
 export const selectFormTypesList = createSelector(
     selectFormType,

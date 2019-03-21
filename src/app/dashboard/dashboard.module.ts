@@ -12,9 +12,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { FormEffects } from '../store/effects/form.effects';
 import { StoreModule } from '@ngrx/store';
 import {formReducer}  from '../store/reducers/form.reducer';
+import { SingleTextfieldComponent } from '../applicationcore/fieldstypes/single-textfield/single-textfield.component';
+import { LayoutFormComponent } from '../applicationcore/fieldstypes/layout-form/layout-form.component';
 
 @NgModule({
-  declarations: [IndexComponent, FormComponent, FieldTypeComponent, DatetimepickerComponent],
+  declarations: [IndexComponent, FormComponent, FieldTypeComponent, DatetimepickerComponent, SingleTextfieldComponent, LayoutFormComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
