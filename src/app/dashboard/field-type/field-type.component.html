@@ -7,15 +7,15 @@
       {{item.id + ' ' + item.displayname}}
 
       <!-- Date Time Picker-->
-      <ng-template *ngSwitchCase='100000' #showDatetimePicker>
+      <div *ngSwitchCase='100000' #showDatetimePicker>
         <app-datetimepicker></app-datetimepicker>
-      </ng-template>
+      </div>
 
 
       <!-- checkbox -->
-      <ng-template *ngSwitchCase='100002' #showCheckBox>
+      <div *ngSwitchCase='100002' #showCheckBox>
         <app-single-textfield></app-single-textfield>
-      </ng-template>
+      </div>
 
     </div>
 
@@ -30,14 +30,14 @@
       <div class="list-item" *ngFor="let item of done" [ngSwitch]="item.typecode" cdkDrag>{{item.id + ' ' + item.displayname}}
     
       <!-- Date Time Picker-->
-      <ng-template *ngSwitchCase='100000'>
+      <div *ngSwitchCase='100000'>
         <app-datetimepicker></app-datetimepicker>
-      </ng-template>
+      </div>
 
       <!-- checkbox -->
-      <ng-template *ngSwitchCase='100002' >
+      <div *ngSwitchCase='100002' >
         <app-single-textfield></app-single-textfield>
-      </ng-template>
+      </div>
 
       </div>
     </div>
