@@ -9,6 +9,14 @@ export class LayoutFormComponent implements OnInit {
 
   constructor() { }
 
+  tabs =[{
+    label :'welcome',
+    name : 'Welcome'
+  },
+  {
+    label :'welcome1',
+    name : 'Welcome1'
+  }]
   ngOnInit() {
   }
 
